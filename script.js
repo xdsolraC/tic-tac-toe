@@ -44,3 +44,8 @@ const Gameboard = (() => {
 
     return { display, markCell, paintWinningCells, getBoard, clearBoard };
 })();
+
+// PLAYER FACTORY FUNCTION
+function Player(name, mark) {
+    return { name, mark, wins: 0 };
+}
