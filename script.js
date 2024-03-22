@@ -73,3 +73,51 @@ const DisplayController = (() => {
 
     return { updateMessage, updateWins };
 })();
+
+// GAME MODULE
+const Game = (() => {
+    let players = [];
+    let currentPlayer;
+    let isGameFinished;
+    let isReset;
+
+    const startBtn = document.querySelector("#start-btn");
+    const player1 = document.querySelector("#player-1");
+    const player2 = document.querySelector("#player-2");
+
+    const start = () => {
+        players = [
+            Player(player1.value.trim() || "Player 1", "X"),
+            Player(player2.value.trim() || "Player 2", "O"),
+        ];
+        currentPlayer = 0;
+        isGameFinished = false;
+        isReset = false;
+        Gameboard.display();
+        DisplayController.updateMessage(`${players[currentPlayer].name} plays`);
+        startBtn.disabled = true;
+    };
+
+    const restart = () => {
+        isGameFinished = false;
+        isReset = false;
+        Gameboard.clearBoard();
+        DisplayController.updateMessage(`${players[currentPlayer].name} plays`);
+    };
+
+    const reset = () => {
+        players.forEach((player) => (player.wins = 0));
+        isGameFinished = true;
+        isReset = true;
+        Gameboard.clearBoard();
+        DisplayController.updateMessage("Click start to play");
+        DisplayController.updateWins(players);
+        startBtn.disabled = false;
+    };
+
+    return {
+        start,
+        restart,
+        reset,
+    };
+})();
