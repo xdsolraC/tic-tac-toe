@@ -137,8 +137,27 @@ const Game = (() => {
         const currentPlayerMark = players[currentPlayer].mark;
         Gameboard.markCell(index, currentPlayerMark);
 
-        currentPlayer = currentPlayer === 0 ? 1 : 0;
-        DisplayController.updateMessage(`${players[currentPlayer].name} plays`);
+        // Check if there is a win or tie.
+        if (checkWin(Gameboard.getBoard())) {
+            isGameFinished = true;
+            DisplayController.updateMessage(
+                `${players[currentPlayer].name} wins!<br> click again to restart`
+            );
+            players[currentPlayer].wins++;
+            DisplayController.updateWins(players);
+        } else if (checkTie(Gameboard.getBoard())) {
+            isGameFinished = true;
+            DisplayController.updateMessage(
+                "Tie game!<br>click again to restart"
+            );
+        }
+        // Switch players if there's no win or tie.
+        else {
+            currentPlayer = currentPlayer === 0 ? 1 : 0;
+            DisplayController.updateMessage(
+                `${players[currentPlayer].name} plays`
+            );
+        }
     };
 
     return {
@@ -148,3 +167,32 @@ const Game = (() => {
         handleClick,
     };
 })();
+
+// HELPER FUNCTIONS
+function checkWin(board) {
+    const winningCombinations = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+    ];
+
+    return winningCombinations.some((combination) => {
+        const [a, b, c] = combination;
+        if (
+            board[a].mark &&
+            board[a].mark === board[b].mark &&
+            board[a].mark === board[c].mark
+        ) {
+            Gameboard.paintWinningCells(combination);
+            return true;
+        }
+    });
+}
+function checkTie(board) {
+    return board.every((cell) => cell.mark !== "");
+}
