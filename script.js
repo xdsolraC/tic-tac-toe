@@ -77,6 +77,9 @@ const DisplayController = (() => {
     return { updateMessage, updateWins };
 })();
 
+// DEFAULT MESSAGE TO DISPLAY
+DisplayController.updateMessage("Click start to play");
+
 // GAME MODULE
 const Game = (() => {
     let players = [];
