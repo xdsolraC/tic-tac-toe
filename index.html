@@ -13,7 +13,53 @@
 </head>
 <body>
 
+    <header>
+        <h1>Tic Tac Toe</h1>
+    </header>
+
+    <main class="game">
+
+        <h2 class="message" id="message-text"></h2>
+
+        <div class="game-board">
+            <div class="cell" id="cell-0"></div>
+            <div class="cell" id="cell-1"></div>
+            <div class="cell" id="cell-2"></div>
+            <div class="cell" id="cell-3"></div>
+            <div class="cell" id="cell-4"></div>
+            <div class="cell" id="cell-5"></div>
+            <div class="cell" id="cell-6"></div>
+            <div class="cell" id="cell-7"></div>
+            <div class="cell" id="cell-8"></div>
+        </div>
+
+        <div class="player-containers">
+            <div class="player">
+                <span class="mark">X</span>
+                <input type="text" id="player-1" placeholder="P1 Name" maxlength="12" autocomplete="off"
+                    title="Insert a name for player 1">
+                <p>Wins: <span class="wins wins-1">0</span></p>
+            </div>
+
+            <div class="player">
+                <span class="mark">O</span>
+                <input type="text" id="player-2" placeholder="P2 Name" maxlength="12" autocomplete="off"
+                    title="Insert a name for player 2">
+                <p>Wins: <span class="wins wins-2">0</span></p>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <button id="start-btn" title="Start the game">Start</button>
+            <button id="reset-btn" title="Reset player counters">Reset</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>By: <a href="https://github.com/xdsolraC" target="_blank">xdsolraC</a></p>
+    </footer>
+
     <script src="script.js"></script>
-    
+
 </body>
 </html>
