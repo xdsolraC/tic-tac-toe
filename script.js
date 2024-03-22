@@ -49,3 +49,23 @@ const Gameboard = (() => {
 function Player(name, mark) {
     return { name, mark, wins: 0 };
 }
+
+// DISPLAY CONTROLLER
+const DisplayController = (() => {
+    const messageElem = document.querySelector("#message-text");
+    const player1wins = document.querySelector(".wins-1");
+    const player2wins = document.querySelector(".wins-2");
+
+    // FUNCTION TO UPDATE MESSAGES
+    const updateMessage = (message) => {
+        messageElem.innerHTML = message;
+    };
+
+    // FUNCTION TO UPDATE PLAYER WINS.
+    const updateWins = (players) => {
+        player1wins.textContent = players[0].wins;
+        player2wins.textContent = players[1].wins;
+    };
+
+    return { updateMessage, updateWins };
+})();
