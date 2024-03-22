@@ -59,6 +59,10 @@ const DisplayController = (() => {
     // FUNCTION TO UPDATE MESSAGES
     const updateMessage = (message) => {
         messageElem.innerHTML = message;
+        // Add fade in animation
+        messageElem.classList.remove("fadeIn");
+        void messageElem.offsetWidth;
+        messageElem.classList.add("fadeIn");
     };
 
     // FUNCTION TO UPDATE PLAYER WINS.
