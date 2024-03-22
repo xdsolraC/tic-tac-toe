@@ -28,6 +28,20 @@ header h1 {
     color: #f53e46;
 }
 
+#toggle-theme {
+    position: absolute;
+    top: 28px;
+    right: 20px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+#toggle-theme svg {
+    fill: #292929;
+}
+
 .game {
     padding: 20px 0;
     display: flex;
@@ -211,4 +225,34 @@ footer a {
 
 footer a:hover {
     color: #f53e46 !important;
+}
+
+.dark-mode,
+.dark-mode .cell {
+    background-color: #292929;
+}
+
+.dark-mode #toggle-theme>svg {
+    fill: #f8f0e3;
+}
+
+.dark-mode .message,
+.dark-mode .cell,
+.dark-mode .player p,
+.dark-mode .player input,
+.dark-mode footer,
+.dark-mode footer a {
+    color: #f8f0e3;
+}
+
+.dark-mode .game-board {
+    background-color: #f8f0e3 !important;
+}
+
+.dark-mode .player input {
+    border: 2px solid #f8f0e3 !important;
+}
+
+.dark-mode .player>input:focus {
+    border-color: #f53e46 !important;
 }
