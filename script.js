@@ -14,6 +14,9 @@ const Gameboard = (() => {
             }" id="cell-${index}">${obj.mark}</div>`;
         });
         document.querySelector(".game-board").innerHTML = newBoard;
+        document.querySelectorAll(".cell").forEach((cell) => {
+            cell.addEventListener("click", Game.handleClick);
+        });
     };
 
     // FUNCTION TO MARK GAMEBOARD CELL
@@ -115,9 +118,33 @@ const Game = (() => {
         startBtn.disabled = false;
     };
 
+    const handleClick = (event) => {
+        if (isGameFinished) {
+            if (isReset) {
+                return;
+            }
+            restart();
+            return;
+        }
+
+        const index = parseInt(event.target.id.slice(length - 1));
+        const boardCell = Gameboard.getBoard()[index].mark;
+
+        // Prevent marking non empty cells.
+        if (boardCell !== "") return;
+
+        // Mark cell with currentPlayer's mark
+        const currentPlayerMark = players[currentPlayer].mark;
+        Gameboard.markCell(index, currentPlayerMark);
+
+        currentPlayer = currentPlayer === 0 ? 1 : 0;
+        DisplayController.updateMessage(`${players[currentPlayer].name} plays`);
+    };
+
     return {
         start,
         restart,
         reset,
+        handleClick,
     };
 })();
