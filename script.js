@@ -196,3 +196,14 @@ function checkWin(board) {
 function checkTie(board) {
     return board.every((cell) => cell.mark !== "");
 }
+
+// EVENT LISTENERS
+let startBtn = document.querySelector("#start-btn");
+startBtn.addEventListener("click", () => {
+    Game.start();
+});
+
+let resetBtn = document.querySelector("#reset-btn");
+resetBtn.addEventListener("click", () => {
+    Game.reset();
+});
