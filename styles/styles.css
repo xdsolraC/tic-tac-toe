@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+html {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+body {
+    background-color: #f8f0e3;
+    font-family: "Jost", sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    transition: all .2s;
+}
+
+header {
+    margin-top: 20px;
+}
+
+header h1 {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #f53e46;
+}
+
+.game {
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.game .message {
+    height: 56px;
+    display: flex;
+    align-items: center;
+    font-family: "Indie Flower", cursive;
+    letter-spacing: 4px;
+    font-weight: 700;
+    font-size: 1.75rem;
+}
+
+/* Fade in animation */
+.fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.game .game-board {
+    font-family: "Indie Flower";
+    width: 300px;
+    height: 300px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 4px;
+    background-color: #292929;
+}
+
+.game-board .cell {
+    background-color: #f8f0e3;
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    transition: all .2s;
+}
+
+.game-board .painted {
+    color: #f53e46 !important;
+}
+
+@media screen and (max-height: 700px) {
+    .game-board {
+        width: 250px !important;
+        height: 250px !important;
+    }
+
+    .cell {
+        font-size: 4.15rem !important;
+    }
+
+}
+
+.player-containers {
+    display: flex;
+    gap: 20px;
+}
+
+.player-containers .player {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+}
+
+.player input {
+    width: 120px;
+    background-color: transparent;
+    border: 2px solid #292929;
+    font-size: 1.2rem;
+    font-family: "Indie Flower", cursive;
+    letter-spacing: 2px;
+    font-weight: 700;
+    border-radius: 50px;
+    transition: all .15s;
+    text-align: center;
+}
+
+.player input:focus {
+    color: #292929;
+    border-color: #f53e46 !important;
+    outline: transparent;
+}
+
+.player .mark {
+    color: #f53e46;
+    font-family: "Indie Flower", cursive;
+    font-weight: 900;
+    font-size: 2rem;
+}
+
+.player p {
+    font-family: "Indie Flower", cursive;
+    font-weight: 900;
+    letter-spacing: 2px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.player p .wins {
+    color: #f53e46;
+    font-family: "Jost";
+    font-weight: 500;
+    font-size: 1.4rem;
+}
+
+.buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.buttons button {
+    width: 100px;
+    border: 2px solid transparent;
+    background-color: #D9D9D9;
+    font-size: 1.26rem;
+    font-family: "Indie Flower", cursive;
+    letter-spacing: 2px;
+    display: flex;
+    justify-content: center;
+    font-weight: 700;
+    border-radius: 50px;
+    transition: all .15s ease-in-out;
+}
+
+.buttons button[disabled] {
+    opacity: .4;
+}
+
+.buttons button:not([disabled]):hover {
+    cursor: pointer;
+    background-color: #f53e46;
+    color: #f8f0e3 !important;
+}
+
+footer {
+    font-size: 1.25rem;
+}
+
+footer a {
+    text-decoration: none;
+    font-family: "Indie Flower", cursive;
+    color: #292929;
+    font-weight: 700;
+    letter-spacing: 2px;
+    transition: all .15s ease-in-out;
+}
+
+footer a:hover {
+    color: #f53e46 !important;
+}
